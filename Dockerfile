@@ -1,6 +1,8 @@
 
 FROM php:7.0-alpine3.7
 
+RUN apk add libpng
+
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install pdo_mysql
