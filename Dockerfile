@@ -1,6 +1,6 @@
 FROM php:7.0-alpine3.7
 
-RUN apk add --no-cache ${PHPIZE_DEPS} \
+RUN apk add --no-cache  ${PHPIZE_DEPS} \
     libstdc++ \
     libpng \
     libpng-dev \
@@ -17,8 +17,10 @@ RUN apk add --no-cache ${PHPIZE_DEPS} \
     gettext-dev \
     libmemcached-dev \
     && docker-php-ext-install mysqli shmop sockets sysvsem gd pdo pdo_mysql iconv bcmath zip xmlrpc soap intl gettext pcntl opcache \
-    && docker-php-ext-configure mcrypt xsl \
-    && docker-php-ext-install mcrypt xsl \
+    && docker-php-ext-configure xsl \
+    && docker-php-ext-install xsl \
+    && docker-php-ext-configure mcrypt \
+    && docker-php-ext-install mcrypt \
     && pecl install redis \
     && pecl install mongodb \
     && pecl install memcached \
