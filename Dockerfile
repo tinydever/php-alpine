@@ -15,7 +15,7 @@ RUN apk add --no-cache \
     icu-dev \
     gettext-dev \
     libmemcached-dev \
-    && docker-php-ext-configure mcrypt xsl
+    && docker-php-ext-configure mcrypt xsl \
     && docker-php-ext-install mysqli shmop sockets sysvsem gd pdo pdo_mysql xsl iconv bcmath zip xmlrpc soap intl gettext pcntl opcache
 
 
