@@ -1,6 +1,7 @@
 FROM php:7.0-alpine3.7
 
-RUN apk add --no-cache libstdc++ ${PHPIZE_DEPS} \
+RUN apk add --no-cache --virtual ${PHPIZE_DEPS} \
+    libstdc++ \
     libpng \
     libpng-dev \
     libcurl \
