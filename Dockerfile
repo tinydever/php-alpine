@@ -1,7 +1,13 @@
 
 FROM php:7.0-alpine3.7
 
-RUN apk add libpng
+RUN apk add libpng \
+    libcurl \
+    mysql \
+    libjpeg \
+    curl \
+    libcurl \
+    freetype
 
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install pdo
