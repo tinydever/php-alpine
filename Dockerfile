@@ -1,40 +1,31 @@
-
 FROM php:7.0-alpine3.7
 
-RUN apk add libpng libpng-devel \
+RUN apk add --no-cache \
+    libpng \
+    libpng-dev \
     libcurl \
     mysql \
     libjpeg \
     curl \
     libcurl \
-    freetype
-
-RUN docker-php-ext-install gd
-RUN docker-php-ext-install pdo
-RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install mcrypt
-RUN docker-php-ext-install mysqli
-RUN docker-php-ext-install shmop
-RUN docker-php-ext-install sockets
-RUN docker-php-ext-install sysvsem
-RUN docker-php-ext-install xsl
-RUN docker-php-ext-install iconv
-RUN docker-php-ext-install zip
-RUN docker-php-ext-install bcmath
-RUN docker-php-ext-install xmlrpc
-RUN docker-php-ext-install soap
-RUN docker-php-ext-install intl
-RUN docker-php-ext-install gettext
-RUN docker-php-ext-install pcntl
-RUN docker-php-ext-install opcache
+    freetype \
+    libmcrypt-dev \
+    libltdl \
+    libxslt-dev \
+    icu-dev \
+    gettext-dev \
+    libmemcached-dev \
+    && docker-php-ext-configure mcrypt xsl
+    && docker-php-ext-install mysqli shmop sockets sysvsem gd pdo pdo_mysql xsl iconv bcmath zip xmlrpc soap intl gettext pcntl opcache
 
 
-RUN pecl install redis\
-  && pecl install mongodb \
-  && pecl install memcached \
-  && pecl install swoole \
-  && docker-php-ext-enable redis mongodb  memcached swoole
-
+RUN apk add --no-cache libstdc++ ${PHPIZE_DEPS} \
+    && pecl install redis \
+    && pecl install mongodb \
+    && pecl install memcached \
+    && pecl install swoole \
+    && docker-php-ext-enable redis mongodb  memcached swoole \
+    && apk del ${PHPIZE_DEPS}
 
 #opcache
 ENV OPCACHE_MAX_ACCELERATED_FILES 4000
