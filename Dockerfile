@@ -1,7 +1,7 @@
 
 FROM php:7.0-alpine3.7
 
-RUN apk add libpng \
+RUN apk add libpng libpng-devel \
     libcurl \
     mysql \
     libjpeg \
