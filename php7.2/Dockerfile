@@ -19,8 +19,6 @@ RUN apk add --no-cache  ${PHPIZE_DEPS} \
     && docker-php-ext-install mysqli shmop sockets sysvsem gd pdo pdo_mysql iconv bcmath zip xmlrpc soap intl gettext pcntl opcache \
     && docker-php-ext-configure xsl \
     && docker-php-ext-install xsl \
-    && docker-php-ext-configure mcrypt \
-    && docker-php-ext-install mcrypt \
     && pecl install redis \
     && pecl install mongodb \
     && pecl install memcached \
