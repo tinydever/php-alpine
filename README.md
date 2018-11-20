@@ -8,3 +8,5 @@ docker pull tinydever/php-alpine
 - [ ***7.1*** ][Dockerfile](https://github.com/tinydever/php-alpine/blob/master/php7.1/Dockerfile)
 - [ ***7.0*** ][Dockerfile](https://github.com/tinydever/php-alpine/blob/master/php7.0/Dockerfile)
 - [ ***fpm-7.1*** ][Dockerfile](https://github.com/tinydever/php-alpine/tree/master/php-fpm/7.1/Dockerfile)
+- [ ***fpm-7.1-dev*** ][Dockerfile](https://github.com/tinydever/php-alpine/tree/master/php-fpm/developer/7.1/Dockerfile)
+
