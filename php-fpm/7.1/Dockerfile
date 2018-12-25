@@ -19,13 +19,17 @@ RUN apk add --no-cache  ${PHPIZE_DEPS} \
     curl \
     libcurl \
     freetype \
+    libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev \
+    libfreetype6-dev \
     libmcrypt-dev \
     libltdl \
     libxslt-dev \
     icu-dev \
     gettext-dev \
     libmemcached-dev \
-    && docker-php-ext-install mysqli shmop sockets sysvsem gd pdo pdo_mysql iconv bcmath zip xmlrpc soap intl gettext pcntl opcache \
+    && docker-php-ext-configure gd --with-gd --with-webp-dir --with-jpeg-dir --with-png-dir --with-zlib-dir --with-xpm-dir --with-freetype-dir  --enable-gd-native-ttf \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install mysqli shmop sockets sysvsem pdo pdo_mysql iconv bcmath zip xmlrpc soap intl gettext pcntl opcache \
     && docker-php-ext-configure xsl \
     && docker-php-ext-install xsl \
     && docker-php-ext-configure mcrypt \
